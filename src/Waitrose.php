@@ -60,7 +60,6 @@ class Waitrose implements Driver
         foreach ($matches['data'] as $scrapedJson) {
             $scrapedJson = (array) json_decode($scrapedJson, true);
             /** @var array{entities?: array{products?: array}} $scrapedJson */
-
             if (isset($scrapedJson['entities']['products'])) {
                 $json = array_shift($scrapedJson['entities']['products']);
 
