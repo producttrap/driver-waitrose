@@ -37,7 +37,7 @@ class Waitrose implements Driver
 
     public function getName(): string
     {
-        return static::IDENTIFIER;
+        return 'Waitrose';
     }
 
     /**
