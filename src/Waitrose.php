@@ -8,12 +8,12 @@ use Illuminate\Contracts\Cache\Repository as CacheRepository;
 use Illuminate\Support\Str;
 use ProductTrap\Contracts\Driver;
 use ProductTrap\DTOs\Brand;
-use ProductTrap\DTOs\Currency;
 use ProductTrap\DTOs\Price;
 use ProductTrap\DTOs\Product;
 use ProductTrap\DTOs\Results;
 use ProductTrap\DTOs\UnitAmount;
 use ProductTrap\DTOs\UnitPrice;
+use ProductTrap\Enums\Currency;
 use ProductTrap\Enums\Status;
 use ProductTrap\Enums\Unit;
 use ProductTrap\Exceptions\ProductTrapDriverException;
@@ -94,17 +94,18 @@ class Waitrose implements Driver
             identifier: $json['brandName'],
         ) : null;
 
+        // Currency
+        $currency = Currency::tryFrom(
+            $json['currentSaleUnitPrice']['price']['currencyCode'] ?? 'GBP',
+        );
+
         // Price
         $price = isset($json['currentSaleUnitPrice']['price']['amount'])
             ? new Price(
                 amount: $json['currentSaleUnitPrice']['price']['amount'],
+                currency: $currency,
             )
             : null;
-
-        // Currency
-        $currency = new Currency(
-            code: $json['currentSaleUnitPrice']['price']['currencyCode'] ?? 'GBP',
-        );
 
         // Images
         $images = array_values(array_unique($json['productImageUrls'] ?? []));
