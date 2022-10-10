@@ -25,8 +25,8 @@ use ProductTrap\ProductTrap;
 /** @var ProductTrap $productTrap */
 $waitrose = $productTrap->driver('waitrose');
 
-$details = $waitrose->find('ABC123');
-echo $details->unitPrice->format(); // $24.56 / 1KG
+$details = $waitrose->find('756176-631547-631548');
+echo $details->unitPrice->label(); // £2.50 each
 ```
 
 ## Change log
