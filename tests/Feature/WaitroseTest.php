@@ -31,7 +31,7 @@ it('can add the Waitrose driver to ProductTrap', function () {
 });
 
 it('can call the ProductTrap facade', function () {
-    expect(FacadesProductTrap::driver(Waitrose::IDENTIFIER)->getName())->toBe(Waitrose::IDENTIFIER);
+    expect(FacadesProductTrap::driver(Waitrose::IDENTIFIER)->getName())->toBe('Waitrose');
 });
 
 it('can retrieve the Waitrose driver from ProductTrap', function () {
