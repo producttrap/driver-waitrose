@@ -132,24 +132,23 @@ class Waitrose implements Driver
         // URL
         $url = "https://waitrose.com/ecom/products/_/{$identifier}";
 
-        return new Product([
-            'identifier' => $identifier,
-            'sku' => $identifier,
-            'name' => $title,
-            'description' => $description,
-            'url' => $url,
-            'price' => $price,
-            'currency' => $currency,
-            'status' => $status,
-            'brand' => $brand,
-            'unitAmount' => $unitAmount,
-            'unitPrice' => $unitPrice,
-            'ingredients' => $ingredients,
-            'images' => $images,
-            'raw' => [
+        return new Product(
+            identifier: $identifier,
+            sku: $identifier,
+            name: $title,
+            description: $description,
+            url: $url,
+            price: $price,
+            status: $status,
+            brand: $brand,
+            unitAmount: $unitAmount,
+            unitPrice: $unitPrice,
+            ingredients: $ingredients,
+            images: $images,
+            raw: [
                 'html' => $html,
             ],
-        ]);
+        );
     }
 
     public function url(string $identifier): string
