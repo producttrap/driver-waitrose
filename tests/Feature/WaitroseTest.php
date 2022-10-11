@@ -63,7 +63,7 @@ it('can call `find` on the waitrose driver and handle a successful response', fu
         ->unitAmount->amount->toBe(110.0)
         ->unitPrice->unitAmount->unit->value->toBe('kg')
         ->unitPrice->unitAmount->amount->toBe(1.0)
-        ->unitPrice->price->amount->toBe(22.72727272727273)
+        ->unitPrice->price->amount->toBe(22.73)
         ->brand->name->toBe('John West')
         ->images->toBe([
             'https://ecom-su-static-prod.wtrecom.com/images/products/9/LN_756176_BP_9.jpg',
