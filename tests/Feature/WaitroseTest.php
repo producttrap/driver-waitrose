@@ -42,7 +42,7 @@ it('can call `find` on the Waitrose driver and handle failed connection', functi
     getMockWaitrose($this->app, '');
 
     $this->app->make(Factory::class)->driver(Waitrose::IDENTIFIER)->find('756176-631547-631548');
-})->throws(ApiConnectionFailedException::class, 'The connection to https://waitrose.com/ecom/products/756176-631547-631548 has failed for the Waitrose driver');
+})->throws(ApiConnectionFailedException::class, 'The connection to https://waitrose.com/ecom/products/_/756176-631547-631548 has failed for the Waitrose driver');
 
 it('can call `find` on the waitrose driver and handle a successful response', function () {
     $html = file_get_contents(__DIR__.'/../fixtures/successful_response.html');
