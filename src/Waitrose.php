@@ -48,17 +48,18 @@ class Waitrose implements Driver
     public function find(string $identifier, array $parameters = []): Product
     {
         $html = $this->remember($identifier, now()->addDay(), fn () => $this->scrape($this->url($identifier)));
+
         $crawler = $this->crawl($html);
         preg_match_all(
-            '/<script nonce=".*?">window.__PRELOADED_STATE__ = (?<data>.*?)<\/script>/',
+            '/<script[^>]*>window\.__PRELOADED_STATE__ = (.*?)<\/script>/',
             $crawler->html(),
             $matches
         );
 
         // Extract product JSON as possible source of information
         $json = null;
-        foreach ($matches['data'] as $scrapedJson) {
-            $scrapedJson = (array) json_decode($scrapedJson, true);
+        foreach ($matches[1] ?? [] as $scrapedJson) {
+            $scrapedJson = (array) json_decode(trim($scrapedJson), true);
             /** @var array{entities?: array{products?: array}} $scrapedJson */
             if (isset($scrapedJson['entities']['products'])) {
                 $json = array_shift($scrapedJson['entities']['products']);
