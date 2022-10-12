@@ -47,8 +47,6 @@ composer test
 
 Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
-We encourage people to come forward with fixes and general improvements. If you fork this repo to provide a fix, please open an issue or PR with reference to your changes. This driver was built off of the documentation provided by waitrose without any real testing, due to being unable to acquire sandbox/test access.
-
 ## Security
 
 If you discover any security related issues, please email security@voke.dev instead of using the issue tracker.
