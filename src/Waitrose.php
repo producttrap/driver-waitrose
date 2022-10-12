@@ -129,15 +129,12 @@ class Waitrose implements Driver
             unitAmount: $unitAmount,
         );
 
-        // URL
-        $url = "https://waitrose.com/ecom/products/_/{$identifier}";
-
         return new Product(
             identifier: $identifier,
             sku: $identifier,
             name: $title,
             description: $description,
-            url: $url,
+            url: $this->url($identifier),
             price: $price,
             status: $status,
             brand: $brand,
@@ -153,7 +150,7 @@ class Waitrose implements Driver
 
     public function url(string $identifier): string
     {
-        return sprintf('%s/ecom/products/%s', self::BASE_URI, $identifier);
+        return sprintf('%s/ecom/products/_/%s', self::BASE_URI, $identifier);
     }
 
     /**
