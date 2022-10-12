@@ -51,14 +51,14 @@ class Waitrose implements Driver
 
         $crawler = $this->crawl($html);
         preg_match_all(
-            '/<script[^>]*>window\.__PRELOADED_STATE__ = (.*?)<\/script>/',
+            '/<script nonce(=".*?")?>window\.__PRELOADED_STATE__ = (?<data>.*?)<\/script>/',
             $crawler->html(),
             $matches
         );
 
         // Extract product JSON as possible source of information
         $json = null;
-        foreach ($matches[1] ?? [] as $scrapedJson) {
+        foreach ($matches['data'] ?? [] as $scrapedJson) {
             $scrapedJson = (array) json_decode(trim($scrapedJson), true);
             /** @var array{entities?: array{products?: array}} $scrapedJson */
             if (isset($scrapedJson['entities']['products'])) {
