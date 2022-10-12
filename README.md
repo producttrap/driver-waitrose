@@ -29,6 +29,10 @@ $details = $waitrose->find('756176-631547-631548');
 echo $details->unitPrice->label(); // £2.50 each
 ```
 
+## Sample
+
+View a sample product [here][sample-product].
+
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
@@ -85,3 +89,5 @@ Read more about Treeware at [treeware.earth][link-treeware].
 [link-author]: https://github.com/owenvoke
 [link-author2]: https://github.com/bradietilley
 [link-contributors]: ../../contributors
+
+[sample-product]: ./docs/SAMPLE_PRODUCT.md
